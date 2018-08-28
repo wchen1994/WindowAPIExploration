@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1535195608 source:d:\sources\apptoback\main.cpp
+	<windows.h>
+	<stdio.h>
+	<iostream>
+	<string>
+	<cctype>
+	<algorithm>
+
+1535195717 source:d:\sources\apptoback\testhidestartmenu.cpp
+	<windows.h>
+	<iostream>
+
+1535203833 source:d:\sources\codeblocks\apptoback\main.cpp
+	<windows.h>
+	<stdio.h>
+	<iostream>
+	<string>
+	<cctype>
+	<algorithm>
+

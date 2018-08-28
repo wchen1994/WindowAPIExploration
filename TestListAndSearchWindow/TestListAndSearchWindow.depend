@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1535197290 source:d:\sources\testlistandsearchwindow\testlistandsearchwindow.cpp
+	<windows.h>
+	<iostream>
+

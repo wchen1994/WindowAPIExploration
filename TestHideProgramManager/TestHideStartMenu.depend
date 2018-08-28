@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1535196440 source:d:\sources\testhidestartmenu\testhidestartmenu.cpp
+	<windows.h>
+	<iostream>
+
