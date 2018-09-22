@@ -1,9 +1,6 @@
 #include <windows.h>
-#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-
-using namespace std;
 
 typedef struct {
         unsigned long pid;
@@ -16,9 +13,9 @@ BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam) {
     _WinStruct *ptr = (_WinStruct*)lParam;
     if (pid == ptr->pid){
         ptr->hWnd = hWnd;
-        return false;
+        return FALSE;
     }
-    return true;
+    return TRUE;
 }
 
 HWND getWindowWithPid(unsigned long pid){
@@ -57,24 +54,25 @@ int main(int argc, char *argv[]){
     unsigned long pid = 0;
     if (argc == 2){
         pid = atol(argv[1]);
-    } else if (argc == 1){
-        cout << "Enter the pid of the program to be attached" << endl;
-        cin >> pid;
+    }
+    printf("Looking for program with pid: %ld\n", pid);
+    HWND hWnd = getWindowWithPid(pid);
+    if (hWnd == NULL){
+        printf("Failed to find window.\n");
+        return -1;
     } else {
-        cout << "Commend don't known. Exit";
-        return 1;
+        printf("Window found.\n");
     }
 
-    cout << "Looking for application with pid" << endl;
-    HWND hWndApp = getWindowWithPid(pid);
-    if (!hWndApp){
-        cout << "Application not found. Exit" << endl;
-        return 1;
-    }
+//    printf("Attach to SysListView32.\n");
+//    SetWindowLong(hWnd, GWL_HWNDPARENT, (LONG)hWndSysListView);
+//
+//    printf("Set window to noactive\n");
+//    SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_NOACTIVATE);
 
-    printf("Attach to SysListView32.\n");
-//    SetWindowLong(hWnd, GWL_HWNDPARENT, (LONG)hWndSysListView); // SetParent is better
-    SetParent(hWndApp, hWndSysListView);
+//    SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE);
 
+    SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE);
     return 0;
 }
+

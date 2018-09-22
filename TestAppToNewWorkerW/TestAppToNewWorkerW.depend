@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1537598531 source:d:\sources\codeblocks\testapptonewworkerw\main.cpp
+	<windows.h>
+	<commctrl.h>
+	<iostream>
+
